@@ -1,0 +1,28 @@
+<idea-plugin>
+    <id>com.azoraqua.MinecraftDevTools</id>
+    <name>MinecraftDevTools</name>
+    <vendor email="info@azoraqua.com" url="https://www.azoraqua.com">Azoraqua</vendor>
+
+    <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html
+         on how to target different products -->
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <applicationConfigurable instance="com.azoraqua.minecraftdevtools.AppSettingsConfigurable" />
+        <applicationService serviceImplementation="com.azoraqua.minecraftdevtools.AppSettingsState" />
+    </extensions>
+
+    <actions>
+        <group id="MinecraftDevTools" text="MinecraftDevTools" popup="true">
+            <add-to-group group-id="ToolsMenu" />
+        </group>
+
+        <action id="com.azoraqua.minecraftdevtools.StartAction" class="com.azoraqua.minecraftdevtools.StartAction" text="Start Minecraft Server">
+            <add-to-group group-id="MinecraftDevTools" anchor="before" relative-to-action="MinecraftDevTools"/>
+        </action>
+
+        <action id="com.azoraqua.minecraftdevtools.StopAction" class="com.azoraqua.minecraftdevtools.StopAction" text="Stop Minecraft Server">
+            <add-to-group group-id="MinecraftDevTools" anchor="after" relative-to-action="MinecraftDevTools"/>
+        </action>
+    </actions>
+</idea-plugin>
